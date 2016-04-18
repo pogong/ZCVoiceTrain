@@ -1,0 +1,21 @@
+//
+//  zc.pch
+//  ZCVoiceTrain
+//
+//  Created by 张三弓 on 16/4/17.
+//  Copyright © 2016年 张三弓. All rights reserved.
+//
+
+#ifndef zc_pch
+#define zc_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "ZCVoicePlayer.h"
+#define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define MAIN_FRAME_W self.view.frame.size.width
+#define MAIN_FRAME_H self.view.frame.size.height
+
+#endif /* zc_pch */
