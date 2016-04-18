@@ -17,6 +17,7 @@
     
     NSDictionary * _recordSet;
     NSString * _inPath;
+	BOOL _isRecording;
 }
 @end
 
@@ -50,8 +51,41 @@
     
 }
 
+- (void)updatePowerLevel
+{
+	if (_isRecording == NO) {
+		return;
+	}
+	[_voiceRecorder updateMeters];
+	CGFloat levelMeter = ([_voiceRecorder peakPowerForChannel:0]+160)/160.0;
+	NSInteger level = 0;
+	if(levelMeter <= 0.2)
+	{
+		level = 1;
+	}
+	else if(levelMeter <=0.4 &&levelMeter >0.2)
+	{
+		level = 2;
+	}
+	else if(levelMeter <=0.6 &&levelMeter >0.4)
+	{
+		level = 3;
+	}
+	else if(levelMeter <=0.8 &&levelMeter >0.6)
+	{
+		level = 4;
+	}
+	else if(levelMeter >0.8)
+	{
+		level = 5;
+	}
+	NSLog(@"up_show_level_%d",level);
+	[self performSelector:@selector(updatePowerLevel) withObject:nil afterDelay:0.25];
+}
+
 - (IBAction)recordAct:(UIButton *)sender {
     if ([sender.titleLabel.text isEqualToString:@"停止"]) {
+		_isRecording = NO;
         [_voiceRecorder pause];
         NSInteger howl = _voiceRecorder.currentTime;
         NSLog(@"---%d",howl);
@@ -71,6 +105,8 @@
             
             //开始录音
             if ([_voiceRecorder record]){
+				_isRecording = YES;
+				[self updatePowerLevel];
                 [sender setTitle:@"停止" forState:UIControlStateNormal];
             }
         }
