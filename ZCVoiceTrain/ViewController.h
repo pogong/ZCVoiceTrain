@@ -11,7 +11,7 @@
 @interface ViewController : UIViewController
 
 - (IBAction)recordAct:(UIButton *)sender;
-- (IBAction)playAct:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *recordBtn;
 
 @end
 

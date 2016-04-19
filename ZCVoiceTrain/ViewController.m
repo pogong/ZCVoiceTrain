@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SomeVoiceController.h"
+#import "ZCVoiceHUD.h"
 
 @interface ViewController ()<AVAudioPlayerDelegate>
 {
@@ -32,6 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+//    [_recordBtn setTitle:@"按住 说话" forState:UIControlStateNormal];//普通状态
+//    [_recordBtn setTitle:@"松开 发送" forState:UIControlStateHighlighted];//按下状态
+//    [_recordBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];//普通状态颜色
+//    [_recordBtn setTitleColor:[UIColor colorWithWhite:0.7 alpha:1] forState:UIControlStateHighlighted];//按下状态颜色
+//    [_recordBtn addTarget:self action:@selector(btnTouchDown:) forControlEvents:UIControlEventTouchDown];//按下并且按住
+//    [_recordBtn addTarget:self action:@selector(btnTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];//释放
+//    [_recordBtn addTarget:self action:@selector(btnTouchDragExit:) forControlEvents:UIControlEventTouchDragExit];//手指离开按钮范围
+//    [_recordBtn addTarget:self action:@selector(btnTouchUpOutside:) forControlEvents:UIControlEventTouchUpOutside];//在范围外释放
+//    [_recordBtn addTarget:self action:@selector(btnTouchDragInside:) forControlEvents:UIControlEventTouchDragInside];//返回到按钮范围
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"xx" style:UIBarButtonItemStylePlain target:self action:@selector(xxAct)];
     
@@ -57,35 +68,25 @@
 		return;
 	}
 	[_voiceRecorder updateMeters];
-	CGFloat levelMeter = ([_voiceRecorder peakPowerForChannel:0]+160)/160.0;
-	NSInteger level = 0;
-	if(levelMeter <= 0.2)
-	{
-		level = 1;
-	}
-	else if(levelMeter <=0.4 &&levelMeter >0.2)
-	{
-		level = 2;
-	}
-	else if(levelMeter <=0.6 &&levelMeter >0.4)
-	{
-		level = 3;
-	}
-	else if(levelMeter <=0.8 &&levelMeter >0.6)
-	{
-		level = 4;
-	}
-	else if(levelMeter >0.8)
-	{
-		level = 5;
-	}
+
+    float averagePower = pow(10, (0.05 * [_voiceRecorder averagePowerForChannel:0]));
+    
+    NSLog(@"22--%f--",averagePower);
+    
+    int any0 = (int)(averagePower * 100);
+    int any1 = MIN(any0, 6);
+    int any2 = MAX(any1, 1);
+	NSInteger level = any2;
+
 	NSLog(@"up_show_level_%d",level);
+    [ZCVoiceHUD showLevel:level];
 	[self performSelector:@selector(updatePowerLevel) withObject:nil afterDelay:0.25];
 }
 
 - (IBAction)recordAct:(UIButton *)sender {
     if ([sender.titleLabel.text isEqualToString:@"停止"]) {
 		_isRecording = NO;
+        [ZCVoiceHUD disMiss];
         [_voiceRecorder pause];
         NSInteger howl = _voiceRecorder.currentTime;
         NSLog(@"---%d",howl);
@@ -98,6 +99,7 @@
         _voiceRecorder = [[AVAudioRecorder alloc]initWithURL:[NSURL fileURLWithPath:_inPath]
                                                     settings:_recordSet
                                                        error:nil];
+        _voiceRecorder.meteringEnabled = YES;
         if ([_voiceRecorder prepareToRecord]){
             
             [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error:nil];

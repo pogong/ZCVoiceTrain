@@ -20,6 +20,8 @@
 		A30427301CC3861300B5D3AE /* VoiceShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A304272E1CC3861300B5D3AE /* VoiceShowCell.m */; };
 		A30427311CC3861300B5D3AE /* VoiceShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A304272F1CC3861300B5D3AE /* VoiceShowCell.xib */; };
 		A30427341CC3951500B5D3AE /* ZCVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A30427331CC3951500B5D3AE /* ZCVoicePlayer.m */; };
+		A30427491CC50F6200B5D3AE /* ZCVoiceHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A30427481CC50F6200B5D3AE /* ZCVoiceHUD.m */; };
+		A304274B1CC50F7600B5D3AE /* ZCVoiceHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A304274A1CC50F7600B5D3AE /* ZCVoiceHUD.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		A30427321CC3951500B5D3AE /* ZCVoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCVoicePlayer.h; sourceTree = "<group>"; };
 		A30427331CC3951500B5D3AE /* ZCVoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCVoicePlayer.m; sourceTree = "<group>"; };
 		A30427431CC3B58600B5D3AE /* zc.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zc.pch; sourceTree = "<group>"; };
+		A30427471CC50F6200B5D3AE /* ZCVoiceHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCVoiceHUD.h; sourceTree = "<group>"; };
+		A30427481CC50F6200B5D3AE /* ZCVoiceHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCVoiceHUD.m; sourceTree = "<group>"; };
+		A304274A1CC50F7600B5D3AE /* ZCVoiceHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCVoiceHUD.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +126,9 @@
 				A30426F91CC35D7400B5D3AE /* AppDelegate.m */,
 				A30426FB1CC35D7400B5D3AE /* ViewController.h */,
 				A30426FC1CC35D7400B5D3AE /* ViewController.m */,
+				A30427471CC50F6200B5D3AE /* ZCVoiceHUD.h */,
+				A30427481CC50F6200B5D3AE /* ZCVoiceHUD.m */,
+				A304274A1CC50F7600B5D3AE /* ZCVoiceHUD.xib */,
 				A304272A1CC3822800B5D3AE /* SomeVoiceController.h */,
 				A304272B1CC3822800B5D3AE /* SomeVoiceController.m */,
 				A30427321CC3951500B5D3AE /* ZCVoicePlayer.h */,
@@ -269,6 +277,7 @@
 			files = (
 				A30427051CC35D7400B5D3AE /* LaunchScreen.storyboard in Resources */,
 				A30427311CC3861300B5D3AE /* VoiceShowCell.xib in Resources */,
+				A304274B1CC50F7600B5D3AE /* ZCVoiceHUD.xib in Resources */,
 				A30427021CC35D7400B5D3AE /* Assets.xcassets in Resources */,
 				A30427001CC35D7400B5D3AE /* Main.storyboard in Resources */,
 			);
@@ -295,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30427491CC50F6200B5D3AE /* ZCVoiceHUD.m in Sources */,
 				A30426FD1CC35D7400B5D3AE /* ViewController.m in Sources */,
 				A30426FA1CC35D7400B5D3AE /* AppDelegate.m in Sources */,
 				A30427341CC3951500B5D3AE /* ZCVoicePlayer.m in Sources */,
@@ -528,6 +538,7 @@
 				A30427211CC35D7500B5D3AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A30427221CC35D7500B5D3AE /* Build configuration list for PBXNativeTarget "ZCVoiceTrainTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +547,7 @@
 				A30427241CC35D7500B5D3AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A30427251CC35D7500B5D3AE /* Build configuration list for PBXNativeTarget "ZCVoiceTrainUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +556,7 @@
 				A30427271CC35D7500B5D3AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

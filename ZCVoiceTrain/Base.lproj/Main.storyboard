@@ -33,15 +33,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr4-j7-Qay">
-                                <rect key="frame" x="83" y="156" width="46" height="30"/>
-                                <state key="normal" title="播放"/>
-                                <connections>
-                                    <action selector="playAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mlo-Nx-TWv"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwT-ab-kGa">
-                                <rect key="frame" x="83" y="91" width="46" height="30"/>
+                                <rect key="frame" x="20" y="570" width="217" height="30"/>
                                 <state key="normal" title="录制"/>
                                 <connections>
                                     <action selector="recordAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0PE-WB-xdZ"/>
@@ -51,10 +44,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5p8-Si-Uef"/>
+                    <connections>
+                        <outlet property="recordBtn" destination="AwT-ab-kGa" id="c1G-3d-DQJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="251"/>
+            <point key="canvasLocation" x="-5" y="382"/>
         </scene>
     </scenes>
 </document>
